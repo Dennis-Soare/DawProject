@@ -16,7 +16,7 @@ namespace DawProjectAPI.Controllers
             return Ok(StudentStore.studentList);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}",Name = "GetStudent")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -35,7 +35,7 @@ namespace DawProjectAPI.Controllers
             return Ok(student);
         }
 
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
@@ -52,7 +52,7 @@ namespace DawProjectAPI.Controllers
             student.Id = StudentStore.studentList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
             StudentStore.studentList.Add(student);
 
-            return Ok(student);
+            return CreatedAtRoute("GetStudent", new { id = student.Id }, student);
         }
     }
 }
