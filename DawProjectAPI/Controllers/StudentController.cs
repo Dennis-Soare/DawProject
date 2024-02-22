@@ -33,8 +33,26 @@ namespace DawProjectAPI.Controllers
             }
 
             return Ok(student);
-
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost]
+        public ActionResult<StudentDTO> CreateStudent([FromBody] StudentDTO student)
+        {
+            if (student == null)
+            {
+                return BadRequest(student);
+            }
+            if (student.Id > 0)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            student.Id = StudentStore.studentList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+            StudentStore.studentList.Add(student);
+
+            return Ok(student);
+        }
     }
 }
