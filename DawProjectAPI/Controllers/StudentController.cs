@@ -1,4 +1,5 @@
-﻿using DawProjectAPI.Models;
+﻿using DawProjectAPI.Data;
+using DawProjectAPI.Models;
 using DawProjectAPI.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,8 @@ namespace DawProjectAPI.Controllers
     {
         [HttpGet]
         public IEnumerable<StudentDTO> GetStudents()
-        {  
-            return new List<StudentDTO> { 
-                new StudentDTO{Id=1, Name="Name 1"} ,
-                new StudentDTO{Id=2, Name="Name 2"}
-            }; 
+        {
+            return StudentStore.studetList;
         }
 
     }
