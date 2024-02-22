@@ -10,15 +10,26 @@ namespace DawProjectAPI.Controllers
     public class StudentController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<StudentDTO> GetStudents()
+        public ActionResult<IEnumerable<StudentDTO>> GetStudents()
         {
-            return StudentStore.studetList;
+            return Ok(StudentStore.studentList);
         }
 
-        [HttpGet("id")]
-        public StudentDTO GetStudent(int id)
+        [HttpGet("{id:int}")]
+        public ActionResult<StudentDTO> GetStudent(int id)
         {
-            return StudentStore.studetList.FirstOrDefault(u => u.Id == id);
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var student = StudentStore.studentList.FirstOrDefault(u => u.Id == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(student);
+
         }
 
     }
