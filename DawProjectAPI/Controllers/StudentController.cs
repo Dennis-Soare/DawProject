@@ -15,5 +15,11 @@ namespace DawProjectAPI.Controllers
             return StudentStore.studetList;
         }
 
+        [HttpGet("id")]
+        public StudentDTO GetStudent(int id)
+        {
+            return StudentStore.studetList.FirstOrDefault(u => u.Id == id);
+        }
+
     }
 }
