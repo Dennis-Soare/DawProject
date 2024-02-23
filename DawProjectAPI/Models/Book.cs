@@ -1,13 +1,13 @@
-﻿using DawProjectAPI.Models.Base;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DawProjectAPI.Models
 {
-    public class Book : BaseEntity
+    public class Book
     {
-        [StringLength(100)]
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public Guid SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        [ForeignKey("SubjectId")]
+        public Subject? Subject { get; set; }
     }
 }
