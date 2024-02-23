@@ -10,6 +10,10 @@ const routes: Routes = [
     component: StudentsComponent
   },
   {
+    path: 'student/:id',
+    component: StudentsComponent
+  },
+  {
     path: 'subjects',
     component: SubjectsComponent
   },
