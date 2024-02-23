@@ -38,6 +38,16 @@ namespace DawProjectAPI.Controllers
             return Ok(student);
         }
 
+        [HttpPost("CreateStudent")]
+        public async Task<IActionResult> CreateS (Student student)
+        {
+
+            await _db.AddAsync(student);
+            await _db.SaveChangesAsync();
+
+            return Ok(student);
+        }
+
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
