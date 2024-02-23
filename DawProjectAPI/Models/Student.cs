@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DawProjectAPI.Models
@@ -9,6 +11,5 @@ namespace DawProjectAPI.Models
         public string Name { get; set; }
         public string Cnp { get; set; }
         public IList<Subject> Subjects { get; set; }
-        public Address Address { get; set; }
     }
 }

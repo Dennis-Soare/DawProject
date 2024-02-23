@@ -9,24 +9,27 @@ namespace DawProjectAPI.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+        private readonly ApplicationDbContext _db;
+        public StudentController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<StudentDTO>> GetStudents()
         {
-            return Ok(StudentStore.studentList);
+            return Ok(_db.Students.ToList());
         }
 
         [HttpGet("{id:int}",Name = "GetStudent")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<StudentDTO> GetStudent(int id)
+        public ActionResult<StudentDTO> GetStudent(Guid id)
         {
-            if (id == 0)
-            {
-                return BadRequest();
-            }
-            var student = StudentStore.studentList.FirstOrDefault(u => u.Id == id);
+            var student = _db.Students.FirstOrDefault(u => u.Id == id);
             if (student == null)
             {
                 return NotFound();
