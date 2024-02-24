@@ -75,5 +75,14 @@ namespace DawProjectAPI.Controllers
             StudentStore.studentList.Remove(student);
             return Ok(StudentStore.studentList);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] StudentDTO s)
+        {
+            var studentId = StudentStore.studentList.FindIndex((StudentDTO _student) =>
+            _student.Id.Equals(s.Id));
+            StudentStore.studentList[studentId] = s;
+            return Ok(s);
+        }
     }
 }
