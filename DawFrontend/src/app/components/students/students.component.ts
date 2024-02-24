@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnInit } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 
 export interface PeriodicElement {
@@ -21,6 +22,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
 
+interface Student {
+  id: number;
+  name: string;
+  cnp: string;
+}
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -30,7 +37,11 @@ export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
+    http.get<Student[]>(baseUrl + 'students').subscribe(result => {
+      console.log(result)
+     }, error => console.error(error));
+  }
 
   ngOnInit(): void {
   }
