@@ -37,11 +37,13 @@ export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
-    http.get<Student[]>(baseUrl + 'students').subscribe(result => {
-      console.log(result)
-     }, error => console.error(error));
-  }
+  constructor() {}
+
+  // constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
+    // http.get<Student[]>(baseUrl + 'students').subscribe(result => {
+    //   console.log(result)
+    //  }, error => console.error(error));
+  // }
 
   ngOnInit(): void {
   }

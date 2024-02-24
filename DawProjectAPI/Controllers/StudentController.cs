@@ -2,6 +2,7 @@
 using DawProjectAPI.Models;
 using DawProjectAPI.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace DawProjectAPI.Controllers
 {
@@ -66,6 +67,13 @@ namespace DawProjectAPI.Controllers
             StudentStore.studentList.Add(student);
 
             return CreatedAtRoute("GetStudent", new { id = student.Id }, student);
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(StudentDTO student)
+        {
+            StudentStore.studentList.Remove(student);
+            return Ok(StudentStore.studentList);
         }
     }
 }
