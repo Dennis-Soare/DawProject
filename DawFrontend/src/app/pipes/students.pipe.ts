@@ -5,8 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StudentsPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: string, ...args: unknown[]): unknown {
+    switch (value.length) {
+      case 0:
+        return '0';
+      case 1:
+        return '1';
+      case 2:
+        return '2';
+      default:
+        return '3';
+    }
   }
 
 }
