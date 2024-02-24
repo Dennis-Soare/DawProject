@@ -8,5 +8,6 @@ namespace DawProjectAPI.Models
         [StringLength(100)]
         public string Name { get; set; }
         public IList<Book>? Books { get; set; }
+        public IList<StudentSubject> StudentSubjects { get; set; }
     }
 }

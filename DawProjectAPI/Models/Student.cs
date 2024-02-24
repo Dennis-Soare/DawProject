@@ -9,7 +9,8 @@ namespace DawProjectAPI.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Cnp { get; set; }
-        public IList<Subject> Subjects { get; set; }
+        public Address Address { get; set; }
+        public Guid AddressId { get; set; }
+        public IList<StudentSubject> StudentSubjects { get; set; }
     }
 }

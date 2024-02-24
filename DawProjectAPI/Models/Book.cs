@@ -7,7 +7,6 @@ namespace DawProjectAPI.Models
         public Guid Id { get; set; }
         public string Title { get; set; }
         public Guid SubjectId { get; set; }
-        [ForeignKey("SubjectId")]
-        public Subject? Subject { get; set; }
+        public Subject Subject { get; set; }
     }
 }

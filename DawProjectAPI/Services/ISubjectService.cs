@@ -10,6 +10,5 @@ namespace DawProjectAPI.Services
         public List<Subject> GetAllSubjects();
         public Subject GetSubjectById(Guid id);
         public Subject GetSubjectByName(string name);
-        public void AddStudentToSubject(StudentSubject studentSubject);
     }
 }

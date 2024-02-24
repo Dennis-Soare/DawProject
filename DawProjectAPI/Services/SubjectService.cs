@@ -35,9 +35,5 @@ namespace DawProjectAPI.Services
         {
             return _subjectRepository.GetSubjectByName(name);
         }
-        public void AddStudentToSubject(StudentSubject studentSubject)
-        {
-            _subjectRepository.AddStudentToSubject(studentSubject);
-        }
     }
 }

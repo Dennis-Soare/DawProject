@@ -38,11 +38,5 @@ namespace DawProjectAPI.Repositories
         {
             return _dbContext.Subjects.SingleOrDefault(s => s.Name == name);
         }
-        public void AddStudentToSubject(StudentSubject studentSubject)
-        {
-            _dbContext.StudentSubjects.Add(studentSubject);
-            _dbContext.SaveChanges();
-        }
-
     }
 }
