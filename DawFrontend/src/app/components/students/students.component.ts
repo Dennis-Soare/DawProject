@@ -36,6 +36,7 @@ interface Student {
 export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  value = '1';
 
   constructor() {}
 

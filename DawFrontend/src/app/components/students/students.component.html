@@ -32,4 +32,17 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   
-  
+  <mat-card>
+    <p>Directives</p>
+    <p appMouseenter>Directive mouse event</p>
+  </mat-card>
+
+  <mat-card>
+    <p>Directives</p>
+    <p appCustomstyle>Directive mouse event</p>
+  </mat-card>
+
+  <mat-card>
+    <p>Pipe</p>
+    <p>{{ value | students }}</p>
+  </mat-card>
