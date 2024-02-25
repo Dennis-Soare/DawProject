@@ -20,7 +20,7 @@ namespace DawProjectAPI.Controllers
         }
 
         [HttpGet("getSubjects")]
-        public IActionResult GetSubjects()
+        public async Task<IActionResult> GetSubjects()
         {
             return Ok(_subjectService.GetAllSubjects());
         }

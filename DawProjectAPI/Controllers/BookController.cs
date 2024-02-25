@@ -16,7 +16,7 @@ namespace DawProjectAPI.Controllers
         }
 
         [HttpGet("getBooks")]
-        public IActionResult GetBooks()
+        public async Task<IActionResult> GetBooks()
         {
             return Ok(_subjectService.GetAllBooks());
         }
